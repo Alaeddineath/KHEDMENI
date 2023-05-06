@@ -1,0 +1,33 @@
+.signup-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 120px 200px;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 400px;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.box:hover {
+  background-color: #eb5d1e;
+}
+
+.box p {
+  margin: 0;
+  font-size: 30px;
+  color: #212529;
+  text-align: center;
+}
+
+.signup-options a {
+  text-decoration: none;
+}
