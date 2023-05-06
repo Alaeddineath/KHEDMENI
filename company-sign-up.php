@@ -43,6 +43,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// Start session
+session_start();
+
 // Check if the company sign-up form has been submitted
 if (isset($_POST['submit'])) {
     // Get form data and sanitize it
@@ -50,10 +53,17 @@ if (isset($_POST['submit'])) {
     $headName = $_POST['headName'];
     $address = $_POST['address'];
     $password = $_POST['password'];
+
     // Insert the data into the companies table
     $sql = "INSERT INTO companies (company_name, head_name, address, password) VALUES ('$companyName', '$headName', '$address', '$password')";
 
     if ($conn->query($sql) === TRUE) {
+        // Set session variables
+        $_SESSION['companyName'] = $companyName;
+        $_SESSION['headName'] = $headName;
+        $_SESSION['address'] = $address;
+
+        // Redirect to company dashboard
         header("location: company-index.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
@@ -63,4 +73,3 @@ if (isset($_POST['submit'])) {
 // Close the database connection
 $conn->close();
 ?>
-

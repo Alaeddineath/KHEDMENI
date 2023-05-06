@@ -26,11 +26,15 @@
 </body>
 </html>
 <?php
+// Start session
+session_start();
+
 // Define database connection variables
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "khademni";
+
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -51,12 +55,13 @@ if(isset($_POST['login'])) {
 
     // Check if the query returned any rows
     if(mysqli_num_rows($result) == 1) {
-        // The user exists, redirect to the dashboard page
+        // The user exists, start the session and redirect to the dashboard page
+        $_SESSION['companyName'] = $companyName;
         header("Location: company-index.php");
         exit();
     } else {
-        // Invalid login, show an error message
-        echo "<h1>Invalid login credentials. Please try again.</h1>";
+        // Invalid login, set the error message
+        $errorMessage = "Invalid login credentials. Please try again.";
     }
 }
 

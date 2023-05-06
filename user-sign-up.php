@@ -30,6 +30,9 @@
         </form>
     </div>
 <?php
+// Start the session
+session_start();
+
 // Define database connection variables
 $servername = "localhost";
 $username = "root";
@@ -57,6 +60,10 @@ if (isset($_POST['submit'])) {
     $sql = "INSERT INTO users (first_name, last_name, phone, email, password) VALUES ('$firstName', '$lastName', '$phone', '$email', '$password')";
 
     if ($conn->query($sql) === TRUE) {
+        // Store user information in session variables
+        $_SESSION['firstName'] = $firstName;
+        $_SESSION['lastName'] = $lastName;
+        $_SESSION['email'] = $email;
 
         header("location: user-index.php");
     } else {
@@ -67,4 +74,5 @@ if (isset($_POST['submit'])) {
 // Close the database connection
 $conn->close();
 ?>
+
 

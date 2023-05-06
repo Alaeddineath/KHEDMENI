@@ -26,6 +26,9 @@
 </body>
 </html>
 <?php
+// Start the session
+session_start();
+
 // Define database connection variables
 $servername = "localhost";
 $username = "root";
@@ -51,7 +54,10 @@ if(isset($_POST['login'])) {
 
     // Check if the query returned any rows
     if(mysqli_num_rows($result) == 1) {
-        // The user exists, redirect to the dashboard page
+        // The user exists, set session variables and redirect to the dashboard page
+        $user = mysqli_fetch_assoc($result);
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['user_email'] = $user['email'];
         header("Location: user-index.php");
         exit();
     } else {
