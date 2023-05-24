@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['id']) && !isset($_SESSION['password'])) {
+    header('Location: index.php');
+    exit();
+}
+
+if (isset($_POST['logout'])) {
+  session_destroy();
+  header('Location: index.php');
+  exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,7 +67,7 @@
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="index.php">Log Out</a></li>
+          <a href="logout.php" class="logout-btn">Log Out <i class="bx bx-chevron-right"></i></a>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

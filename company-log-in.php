@@ -57,6 +57,7 @@ if(isset($_POST['login'])) {
     if(mysqli_num_rows($result) == 1) {
         // The user exists, start the session and redirect to the dashboard page
         $_SESSION['companyName'] = $companyName;
+        $_SESSION['password'] = $password;
         header("Location: company-index.php");
         exit();
     } else {

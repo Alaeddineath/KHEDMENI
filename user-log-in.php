@@ -56,8 +56,9 @@ if(isset($_POST['login'])) {
     if(mysqli_num_rows($result) == 1) {
         // The user exists, set session variables and redirect to the dashboard page
         $user = mysqli_fetch_assoc($result);
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['user_email'] = $user['email'];
+        $_SESSION['id'] = $user['id'];
+        $_SESSION['email'] = $email;
+        $_SESSION['password'] = $password;
         header("Location: user-index.php");
         exit();
     } else {

@@ -3,12 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	  	<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-		<!-- Bootstrap JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+	  
 		<title>job posting</title>
 		<meta content="" name="description">
 		<meta content="" name="keywords">
@@ -38,34 +33,71 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1 class="text-light"><a href="index.php"><span>KHADEMNI</span></a></h1>
+        <h1 class="text-light"><a href="index.html"><span>KHEDEMNI</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="index.php#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="index.php#about">About Us</a></li>
-          <li><a class="nav-link scrollto" href="index.php#services">Services</a></li>
+          <li><a class="nav-link scrollto active" href="index.html#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="index.html#about">About Us</a></li>
+          <li><a class="nav-link scrollto" href="index.html#services">Services</a></li>
           <li class="dropdown"><a href="#"><span>find a job</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="jobposting.php">Post a job</a></li>
-              <li><a href="jobpostings.php">check job applications</a></li>
+              <li><a href="jobpostings.php">check jobs</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+		  <li><a class="getstarted scrollto" href="singup.html">sign up</a></li>
+		  <li><a class="getstarted scrollto" href="login.html">log in</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
     </div>
   </header><!-- End Header -->
-  <main id="new_mainnn">
-		<section id="job-posting1" >
-		<div class= style="justify-content:center">
-<?php
+
+	<main id="new_main">
+		<section id="form" >
+		<div class="job-form" style="justify-content:center">
+			<form action="jobpostings.php" method="post">
+			<h2>Post a Job</h2>
+			<br>
+			
+				<label for="worker-type">Are you a freelancer?</label>
+				<br>
+				<select id="worker-type" name="worker-type" style="max-width:60%">
+					<option value="yes">Yes</option>
+					<option value="no">No</option>
+				</select>
+				<br>  <br>
+				<div id="company-name-container" style="display:none;">
+					<label for="company-name">Company Name</label>
+					<input type="text" id="company-name" name="company-name">
+				</div>
+				<label for="job-title">Job Title</label>
+				<br>
+				<input type="text" id="job-title" name="job-title" style=" max-width:60%" >
+				<br>
+				<label for="salary">Salary</label>
+				<br>
+				<input type="text" id="salary" name="salary" style="max-width:60%">
+				<br>
+				<label for="location">Location</label>
+				<br>
+				<input type="text" id="location" name="location" style="max-width:60%">
+				<br><label for="job-type">Job Type</label>
+				<br><input type="text" id="job-type" name="job-type" style="max-width:60%">
+				<br><label for="job-description">Job Description</label>
+				<br><textarea id="job-description" name="job-description" style="max-width:60%;max-length:60px"></textarea>
+				<br>
+                <button class="submit-btn" type="submit" style="max-width:60%" name="post_job">Submit</button>
+			</form>
+		
+		<?php
 //CODE TO INSERT DATA INTO THE DATA BASE
 // Connect to the database
 $servername = 'localhost';
@@ -102,64 +134,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['post_job'])) {
   }
 
 }
-
-// Handle job application form submission
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['apply_job'])) {
-
-  // Get form data
-  $job_id = $_POST['job_id'];
-  $fname = $_POST['fname'];
-  $email = $_POST['email'];
-  $resume = $_FILES['resume']['name'];
-  $user_id= $_POST['user_id'];
-  $phone_num = $_POST['phone_num'];
-  $lname= $_POST['lname'];
-
-  // Insert data into database
-  $sql = "INSERT INTO job_applications (job_id, fname,lname, email, resume, user_id , phone_num)
-          VALUES ('$job_id', '$fname','$lname', '$email', '$resume',$user_id,$phone_num)";
-
-  if ($conn->query($sql) === TRUE) {
-    // Upload resume file to server
-    $target_dir = "uploads/";
-    $target_file = $target_dir . basename($_FILES['resume']['name']);
-    move_uploaded_file($_FILES['resume']['tmp_name'], $target_file);
-    echo "Application submitted successfully";
-  } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-  }
-
-}
-
 // Close database connection
 $conn->close();
 
 ?>
 </div> </section>
 	</main>
- <!-- ======= Footer ======= -->
- <footer id="footer">
+	 <!-- ======= Footer ======= -->
+	 <footer id="footer">
 		<div class="footer-top">
 		  <div class="container">
 			<div class="row">
 	
 			  <div class="col-lg-3 col-md-6 footer-contact">
-				<h3>KHADEMNI</h3>
+				<h3>KHEDEMNI</h3>
 				<p>
 				  national higher school of artificial intelligence <br>
 				  sidi abdellah<br>
 				  Algeria <br><br>
 				  <strong>Phone:</strong> +213 1111111111<br>
-				  <strong>Email:</strong> KHADEMNI@ensia.edu.dz<br>
+				  <strong>Email:</strong> khedemni@ensia.edu.dz<br>
 				</p>
 			  </div>
 	
 			  <div class="col-lg-3 col-md-6 footer-links">
 				<h4>Useful Links</h4>
 				<ul>
-				  <li><i class="bx bx-chevron-right"></i> <a href="index.php">Home</a></li>
-				  <li><i class="bx bx-chevron-right"></i> <a href="index.php#about">About us</a></li>
-				  <li><i class="bx bx-chevron-right"></i> <a href="index.php#services">Services</a></li>
+				  <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
+				  <li><i class="bx bx-chevron-right"></i> <a href="index.html#about">About us</a></li>
+				  <li><i class="bx bx-chevron-right"></i> <a href="index.html#services">Services</a></li>
 				  <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
 				  <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
 				</ul>

@@ -63,7 +63,9 @@ if (isset($_POST['submit'])) {
         // Store user information in session variables
         $_SESSION['firstName'] = $firstName;
         $_SESSION['lastName'] = $lastName;
+        $_SESSION['phone'] = $phone;
         $_SESSION['email'] = $email;
+        $_SESSION['password'] = $password;
 
         header("location: user-index.php");
     } else {
