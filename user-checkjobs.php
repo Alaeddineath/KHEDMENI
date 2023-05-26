@@ -33,26 +33,23 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1 class="text-light"><a href="index.html"><span>KHEDEMNI</span></a></h1>
+        <h1 class="text-light"><a href=""><span>KHADEMNI</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <!-- <a href="company-index.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="index.html#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="index.html#about">About Us</a></li>
-          <li><a class="nav-link scrollto" href="index.html#services">Services</a></li>
+          <li><a class="nav-link scrollto active" href="company-index.php#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="company-index.php#about">About Us</a></li>
+          <li><a class="nav-link scrollto" href="company-index.php#services">Services</a></li>
           <li class="dropdown"><a href="#"><span>find a job</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="jobposting.html">Post a job</a></li>
-              <li><a href="jobpostings.php">check jobs</a></li>
+              <li><a href="user-checkjobs.php">check jobs</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
-		  <li><a class="getstarted scrollto" href="singup.html">sign up</a></li>
-		  <li><a class="getstarted scrollto" href="login.html">log in</a></li>
+          <a href="logout.php" class="logout-btn">Log Out <i class="bx bx-chevron-right"></i></a>
 
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -115,7 +112,7 @@ if (!empty($search_term)) {
               <p class="salary"><strong>job salary: </strong><?php echo htmlspecialchars($row['job_salary']); ?> DA</p>
               <p class="location"><strong>job location: </strong><?php echo htmlspecialchars($row['job_location']); ?></p>
               <p class="job-type"><strong>job type: </strong><?php echo htmlspecialchars($row['job_type']); ?></p>
-              <a href="more-info.php?id=<?php echo $row['job_id'];?>">see more</a>
+              <a href="user-more-info.php?id=<?php echo $row['job_id'];?>">see more</a>
             </div>
           
 					
@@ -149,7 +146,7 @@ else {
               <p class="salary"><strong>job salary: </strong><?php echo htmlspecialchars($job_salary); ?> DA</p>
               <p class="location"><strong>job location: </strong><?php echo htmlspecialchars($jobloc); ?></p>
               <p class="job-type"><strong>job type: </strong><?php echo htmlspecialchars($jtype); ?></p>
-              <a href="more-info.php?id=<?php echo $job_id;?>">see more</a>
+              <a href="user-more-info.php?id=<?php echo $job_id;?>">see more</a>
             </div>
           
 
@@ -192,9 +189,9 @@ else {
 			  <div class="col-lg-3 col-md-6 footer-links">
 				<h4>Useful Links</h4>
 				<ul>
-				  <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
-				  <li><i class="bx bx-chevron-right"></i> <a href="index.html#about">About us</a></li>
-				  <li><i class="bx bx-chevron-right"></i> <a href="index.html#services">Services</a></li>
+				  <li><i class="bx bx-chevron-right"></i> <a href="company-index.php">Home</a></li>
+				  <li><i class="bx bx-chevron-right"></i> <a href="company-company-index.php#about">About us</a></li>
+				  <li><i class="bx bx-chevron-right"></i> <a href="company-index.php#services">Services</a></li>
 				  <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
 				  <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
 				</ul>

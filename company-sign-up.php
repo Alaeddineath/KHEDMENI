@@ -62,7 +62,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['companyName'] = $companyName;
         $_SESSION['headName'] = $headName;
         $_SESSION['address'] = $address;
-		$_SESSION['password'] = $password;
+		$_SESSION['company-password'] = $password;
 
         // Redirect to company dashboard
         header("location: company-index.php");

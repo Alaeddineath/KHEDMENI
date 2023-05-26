@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['companyName']) && !isset($_SESSION['company-password'])) {
+    header('Location: index.php');
+    exit();
+}
+if (isset($_POST['logout'])) {
+    session_destroy();
+    header('Location: index.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,9 +49,9 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1 class="text-light"><a href="index.html"><span>KHEDEMNI</span></a></h1>
+        <h1 class="text-light"><a href="company-index.php"><span>khademni</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <!-- <a href="company-index.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
@@ -68,7 +81,7 @@
   $dbhost = 'localhost';
   $dbuser = 'root';
   $dbpass = '';
-  $dbname = 'khedemni';
+  $dbname = 'khademni';
   
   $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 $job_id=$_GET['id'];
@@ -83,7 +96,7 @@ $row= mysqli_fetch_assoc($result);
         <div class="d-flex justify-content-between align-items-center">
           <h2>Portfolio Details</h2>
           <ol>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="company-index.php">Home</a></li>
             <li><a href="jobpostings.php">jobs</a></li>
             <li>job Details</li>
           </ol>
@@ -129,20 +142,6 @@ $row= mysqli_fetch_assoc($result);
   <!-- ======= Footer ======= -->
   <footer id="footer">
 
-    <div class="footer-newsletter">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-6">
-            <h4>apply to this job</h4>
-            <p>don't miss the opportunity!</p>
-            
-              <a href="jobaplication.php?id=<?php echo $job_id;?>">apply</a>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="footer-top">
       <div class="container">
         <div class="row">
@@ -154,16 +153,16 @@ $row= mysqli_fetch_assoc($result);
               sidi abdellah<br>
               Algeria <br><br>
               <strong>Phone:</strong> +213 1111111111<br>
-              <strong>Email:</strong> khedemni@ensia.edu.dz<br>
+              <strong>Email:</strong> khademni@ensia.edu.dz<br>
             </p>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="index.html#about">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="index.html#services">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="company-index.php">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="company-index.php#about">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="company-index.php#services">Services</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
             </ul>

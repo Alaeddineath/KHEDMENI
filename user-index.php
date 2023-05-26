@@ -60,10 +60,9 @@ if (isset($_POST['logout'])) {
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About Us</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li class="dropdown"><a href="#"><span>Job</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="#"><span>Find a Job</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="jobposting.php">Post a job</a></li>
-              <li><a href="jobpostings.php">check job applications</a></li>
+              <li><a href="user-checkjobs.php">Find a Job</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
@@ -157,7 +156,7 @@ if (isset($_POST['logout'])) {
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4 class="title"><a href="jobpostings.php">Job Search</a></h4>
+              <h4 class="title"><a href="user-checkjobs.php">Job Search</a></h4>
               <p class="description">KHADEMNI can include a job search engine to help job seekers find job openings based on their preferences and qualifications. click here to check all available jobs and search for the ones that suit you</p>
             </div>
           </div>

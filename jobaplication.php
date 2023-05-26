@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['id']) && !isset($_SESSION['password'])) {
+    header('Location: index.php');
+    exit();
+}
+
+if (isset($_POST['logout'])) {
+  session_destroy();
+  header('Location: index.php');
+  exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -33,16 +47,16 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1 class="text-light"><a href="index.html"><span>KHEDEMNI</span></a></h1>
+        <h1 class="text-light"><a href="user-index.php"><span>KHEDEMNI</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <!-- <a href="user-index.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="index.html#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="index.html#about">About Us</a></li>
-          <li><a class="nav-link scrollto" href="index.html#services">Services</a></li>
+          <li><a class="nav-link scrollto active" href="user-index.php#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="user-index.php#about">About Us</a></li>
+          <li><a class="nav-link scrollto" href="user-index.php#services">Services</a></li>
           <li class="dropdown"><a href="#"><span>find a job</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
             <li><a href="jobposting.php">Post a job</a></li>
@@ -50,9 +64,7 @@
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
-		  <li><a class="getstarted scrollto" href="singup.html">sign up</a></li>
-		  <li><a class="getstarted scrollto" href="login.html">log in</a></li>
+		  <a href="logout.php" class="logout-btn">Log Out <i class="bx bx-chevron-right"></i></a>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -66,10 +78,6 @@
 			<form  method="post">
 			<h2>apply to the Job</h2>
 			<br>
-			
-				
-				
-				
 					<label for="lname">last name</label> <br>
 					<input type="text" id="lname" name="lname">
 				<br>
@@ -102,7 +110,7 @@
 $servername = 'localhost';
 $username = 'root';
 $password ='';
-$dbname = 'khedemni';
+$dbname = 'khademni';
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 $job_id=$_GET['id'];
@@ -162,9 +170,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['apply_job'])) {
 			  <div class="col-lg-3 col-md-6 footer-links">
 				<h4>Useful Links</h4>
 				<ul>
-				  <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
-				  <li><i class="bx bx-chevron-right"></i> <a href="index.html#about">About us</a></li>
-				  <li><i class="bx bx-chevron-right"></i> <a href="index.html#services">Services</a></li>
+				  <li><i class="bx bx-chevron-right"></i> <a href="user-index.php">Home</a></li>
+				  <li><i class="bx bx-chevron-right"></i> <a href="user-index.php#about">About us</a></li>
+				  <li><i class="bx bx-chevron-right"></i> <a href="user-index.php#services">Services</a></li>
 				  <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
 				  <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
 				</ul>

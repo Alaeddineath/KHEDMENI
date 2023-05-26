@@ -18,5 +18,14 @@ CREATE TABLE companies (
     password VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+CREATE TABLE jobs (
+    job_title VARCHAR(255) NOT NULL,
+    job_description TEXT,
+    job_location VARCHAR(255),
+    job_type VARCHAR(255),
+    job_salary float,
+    job_id INT PRIMARY KEY AUTO_INCREMENT,
+    worker_type VARCHAR(255)
+);
 
 

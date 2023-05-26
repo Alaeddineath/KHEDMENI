@@ -11,62 +11,13 @@ if (isset($_POST['logout'])) {
     exit();
 }
 ?>
-<?php
-//CODE TO INSERT DATA INTO THE DATABASE
-// Connect to the database
-$servername = 'localhost';
-$username = 'root';
-$password = '';
-$dbname = 'khademni';
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-
-// Initialize error message variable
-$error_message = "";
-
-// Handle job posting form submission
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['post_job'])) {
-
-  // Get form data
-  $job_title = $_POST['job-title'];
-  $job_description = $_POST['job-description'];
-  $job_location = $_POST['location'];
-  $job_type = $_POST['job-type'];
-  $job_salary = $_POST['salary'];
-  $worker_type = $_POST['worker-type'];
-
-  // Validate form data
-  if (empty($job_title) || empty($job_description) || empty($job_location) || empty($job_type) || empty($job_salary) || empty($worker_type)) {
-    $error_message = "Please fill in all the required fields.";
-  } else {
-    // Insert data into database
-    $sql = "INSERT INTO jobs (job_title, job_description, job_location, job_type, job_salary, worker_type)
-    VALUES ('$job_title', '$job_description', '$job_location', '$job_type', '$job_salary', '$worker_type')";
-
-    if ($conn->query($sql) === TRUE) {
-      header("Location: company-checkjobs.php");
-      exit();
-    } else {
-      $error_message = "Error: " . $sql . "<br>" . $conn->error;
-    }
-  }
-}
-
-// Close database connection
-$conn->close();
-?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta content="width=device-width, initial-scale=1.0" name="viewport">
 	  
-		<title>job posting</title>
+		<title>jobs</title>
 		<meta content="" name="description">
 		<meta content="" name="keywords">
 	  
@@ -95,7 +46,7 @@ $conn->close();
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1 class="text-light"><a href="company-index.php"><span>KHEDEMNI</span></a></h1>
+        <h1 class="text-light"><a href="company-index.php"><span>KHADEMNI</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="company-index.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -112,7 +63,7 @@ $conn->close();
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-		  <a href="logout.php" class="logout-btn">Log Out <i class="bx bx-chevron-right"></i></a>
+
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -120,45 +71,116 @@ $conn->close();
     </div>
   </header><!-- End Header -->
 
-	<main id="new_main">
+	<main>
+	<?php 
+                          $dbhost = 'localhost';
+                          $dbuser = 'root';
+                          $dbpass = '';
+                          $dbname = 'khademni';     
+                          $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname); ?>
+	<!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>job offers</h2>
+          <p>Check out all all the available job offers!</p>
+        </div>
 		<section id="form" >
 		<div class="job-form" style="justify-content:center">
-			<form method="post">
-			<h2>Post a Job</h2>
-			<br>
-			
-				<label for="worker-type">Are you a freelancer?</label>
-				<br>
-				<select id="worker-type" name="worker-type" style="max-width:60%">
-					<option value="yes">Yes</option>
-					<option value="no">No</option>
-				</select>
-				<br>  <br>
-				<div id="company-name-container" style="display:none;">
-					<label for="company-name">Company Name</label>
-					<input type="text" id="company-name" name="company-name">
-				</div>
-				<label for="job-title">Job Title</label>
-				<br>
-				<input type="text" id="job-title" name="job-title" style=" max-width:60%" >
-				<br>
-				<label for="salary">Salary</label>
-				<br>
-				<input type="text" id="salary" name="salary" style="max-width:60%">
-				<br>
-				<label for="location">Location</label>
-				<br>
-				<input type="text" id="location" name="location" style="max-width:60%">
-				<br><label for="job-type">Job Type</label>
-				<br><input type="text" id="job-type" name="job-type" style="max-width:60%">
-				<br><label for="job-description">Job Description</label>
-				<br><textarea id="job-description" name="job-description" style="max-width:60%;max-length:60px"></textarea>
-				<br>
-                <button class="submit-btn" type="submit" style="max-width:60%" name="post_job">Submit</button>
-			</form>
-		
+ <h1>Job Search</h1>
+        <form method="get" action="">
+                <label for="search">Search for a job:</label>
+                <input type="text" id="search" name="search">
+                <button type="submit">Search</button>
+        </form>
+        <div >
+        <?php 
+// Retrieve the search term from the GET request
+if (isset($_GET['search'])) {
+	$search_term = $_GET['search'];
+} else {
+	$search_term = '';
+}
 
-</div> </section>
+// Sanitize the search term to prevent SQL injection attacks
+$search_term = mysqli_real_escape_string($conn, $search_term);
+
+// If the search term is not empty, search for job listings that match the search term
+if (!empty($search_term)) {
+	$sql = "SELECT * FROM jobs WHERE job_title LIKE '%$search_term%'";
+	$result = mysqli_query($conn, $sql);
+
+	if (mysqli_num_rows($result) > 0) {
+			echo "<h2>Search results:</h2>";
+			while ($row = mysqli_fetch_assoc($result)) { 
+				          ?>
+					
+                       
+						  
+          
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4 class="title"><a href="more-info.php?id=<?php echo $row['job_id'];?>"><?php echo htmlspecialchars($row['job_title']); ?></a></h4>
+              <p class="salary"><strong>job salary: </strong><?php echo htmlspecialchars($row['job_salary']); ?> DA</p>
+              <p class="location"><strong>job location: </strong><?php echo htmlspecialchars($row['job_location']); ?></p>
+              <p class="job-type"><strong>job type: </strong><?php echo htmlspecialchars($row['job_type']); ?></p>
+              <a href="company-more-info.php?id=<?php echo $row['job_id'];?>">see more</a>
+            </div>
+          
+					
+<?php
+				}
+	} else {
+			echo "<p>No results found.</p>";
+	}
+}
+else {
+                          $query = "SELECT* FROM jobs";
+                          
+
+                          if ($result=mysqli_query($conn,$query))
+                          {
+                          // Fetch one and one row
+                          while ($row=mysqli_fetch_row($result))
+                          {
+                          $job_title = $row[0];
+                          $job_description = $row[1];                          
+                          $jobloc = $row[2];
+                          $jtype =  $row[3];
+						  $job_salary = $row[4];
+                          $job_id = $row[5];                          
+                          $workertype = $row[6];  
+                       ?>
+          
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4 class="title"><a href="more-info.php?id=<?php echo $job_id;?>"><?php echo htmlspecialchars($job_title); ?></a></h4>
+              <p class="salary"><strong>job salary: </strong><?php echo htmlspecialchars($job_salary); ?> DA</p>
+              <p class="location"><strong>job location: </strong><?php echo htmlspecialchars($jobloc); ?></p>
+              <p class="job-type"><strong>job type: </strong><?php echo htmlspecialchars($jtype); ?></p>
+              <a href="company-more-info.php?id=<?php echo $job_id;?>">see more</a>
+            </div>
+          
+
+
+  
+
+        <?php
+                     }//end while
+                          // Free result set
+                          mysqli_free_result($result);
+                          }// end if
+						}
+                          mysqli_close($conn);        
+                      ?>
+      </div> </div>
+    </section><!-- End Services Section -->
+
+
+
+
+
 	</main>
 	 <!-- ======= Footer ======= -->
 	 <footer id="footer">
@@ -167,13 +189,13 @@ $conn->close();
 			<div class="row">
 	
 			  <div class="col-lg-3 col-md-6 footer-contact">
-				<h3>khademni</h3>
+				<h3>KHEDEMNI</h3>
 				<p>
 				  national higher school of artificial intelligence <br>
 				  sidi abdellah<br>
 				  Algeria <br><br>
 				  <strong>Phone:</strong> +213 1111111111<br>
-				  <strong>Email:</strong> KHADEMNI@ensia.edu.dz<br>
+				  <strong>Email:</strong> khedemni@ensia.edu.dz<br>
 				</p>
 			  </div>
 	
@@ -181,7 +203,7 @@ $conn->close();
 				<h4>Useful Links</h4>
 				<ul>
 				  <li><i class="bx bx-chevron-right"></i> <a href="company-index.php">Home</a></li>
-				  <li><i class="bx bx-chevron-right"></i> <a href="company-index.php#about">About us</a></li>
+				  <li><i class="bx bx-chevron-right"></i> <a href="company-company-index.php#about">About us</a></li>
 				  <li><i class="bx bx-chevron-right"></i> <a href="company-index.php#services">Services</a></li>
 				  <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
 				  <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
