@@ -60,6 +60,10 @@ if (isset($_POST['submit'])) {
     $sql = "INSERT INTO users (first_name, last_name, phone, email, password) VALUES ('$firstName', '$lastName', '$phone', '$email', '$password')";
 
     if ($conn->query($sql) === TRUE) {
+         // Retrieve the auto-generated ID from the last insert operation
+         $id = $conn->insert_id;
+         // Store user information in session variables
+         $_SESSION['id'] = $id;
         // Store user information in session variables
         $_SESSION['firstName'] = $firstName;
         $_SESSION['lastName'] = $lastName;
