@@ -108,7 +108,7 @@ if (!empty($search_term)) {
           
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
-              <h4 class="title"><a href="more-info.php?id=<?php echo $row['job_id'];?>"><?php echo htmlspecialchars($row['job_title']); ?></a></h4>
+              <h4 class="title"><a href="user-more-info.php?id=<?php echo $row['job_id'];?>"><?php echo htmlspecialchars($row['job_title']); ?></a></h4>
               <p class="salary"><strong>job salary: </strong><?php echo htmlspecialchars($row['job_salary']); ?> DA</p>
               <p class="location"><strong>job location: </strong><?php echo htmlspecialchars($row['job_location']); ?></p>
               <p class="job-type"><strong>job type: </strong><?php echo htmlspecialchars($row['job_type']); ?></p>
@@ -142,7 +142,7 @@ else {
           
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
-              <h4 class="title"><a href="more-info.php?id=<?php echo $job_id;?>"><?php echo htmlspecialchars($job_title); ?></a></h4>
+              <h4 class="title"><a href="user-more-info.php?id=<?php echo $job_id;?>"><?php echo htmlspecialchars($job_title); ?></a></h4>
               <p class="salary"><strong>job salary: </strong><?php echo htmlspecialchars($job_salary); ?> DA</p>
               <p class="location"><strong>job location: </strong><?php echo htmlspecialchars($jobloc); ?></p>
               <p class="job-type"><strong>job type: </strong><?php echo htmlspecialchars($jtype); ?></p>
