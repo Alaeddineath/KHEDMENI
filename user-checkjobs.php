@@ -28,29 +28,29 @@
 	  
 	  </head>
 <body>
-<!-- ======= Header ======= -->
-<header id="header" class="fixed-top d-flex align-items-center">
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1 class="text-light"><a href=""><span>KHADEMNI</span></a></h1>
+        <h1 class="text-light"><a href="user-index.php"><span>KHADEMNI</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="company-index.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <!-- <a href="user-index.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="company-index.php#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="company-index.php#about">About Us</a></li>
-          <li><a class="nav-link scrollto" href="company-index.php#services">Services</a></li>
-          <li class="dropdown"><a href="#"><span>find a job</span> <i class="bi bi-chevron-down"></i></a>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About Us</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li class="dropdown"><a href="#"><span>Find a Job</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="user-checkjobs.php">check jobs</a></li>
+              <li><a href="user-checkjobs.php">Find a Job</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="nav-link scrollto" href="user-profile-index.php">Profile</a></li>
           <a href="logout.php" class="logout-btn">Log Out <i class="bx bx-chevron-right"></i></a>
-
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -108,7 +108,7 @@ if (!empty($search_term)) {
           
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
-              <h4 class="title"><a href="user-more-info.php?id=<?php echo $row['job_id'];?>"><?php echo htmlspecialchars($row['job_title']); ?></a></h4>
+              <h4 class="title"><a href="more-info.php?id=<?php echo $row['job_id'];?>"><?php echo htmlspecialchars($row['job_title']); ?></a></h4>
               <p class="salary"><strong>job salary: </strong><?php echo htmlspecialchars($row['job_salary']); ?> DA</p>
               <p class="location"><strong>job location: </strong><?php echo htmlspecialchars($row['job_location']); ?></p>
               <p class="job-type"><strong>job type: </strong><?php echo htmlspecialchars($row['job_type']); ?></p>
@@ -142,7 +142,7 @@ else {
           
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
-              <h4 class="title"><a href="user-more-info.php?id=<?php echo $job_id;?>"><?php echo htmlspecialchars($job_title); ?></a></h4>
+              <h4 class="title"><a href="more-info.php?id=<?php echo $job_id;?>"><?php echo htmlspecialchars($job_title); ?></a></h4>
               <p class="salary"><strong>job salary: </strong><?php echo htmlspecialchars($job_salary); ?> DA</p>
               <p class="location"><strong>job location: </strong><?php echo htmlspecialchars($jobloc); ?></p>
               <p class="job-type"><strong>job type: </strong><?php echo htmlspecialchars($jtype); ?></p>
