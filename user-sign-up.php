@@ -65,6 +65,8 @@ if (isset($_POST['submit'])) {
     $sql = "INSERT INTO users (first_name, last_name, phone, email, password, Job) VALUES ('$firstName', '$lastName', '$phone', '$email', '$password', '$job')";
 
     if ($conn->query($sql) === TRUE) {
+        $id = $conn->insert_id;
+        $_SESSION['id']= $id;
         // Store user information in session variables
         $_SESSION['firstName'] = $firstName;
         $_SESSION['lastName'] = $lastName;
