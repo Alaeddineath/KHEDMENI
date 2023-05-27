@@ -55,7 +55,7 @@ if (isset($_POST['submit'])) {
     // Get form data and sanitize it
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
-    $phone = $_POST['phone'];
+    $phone = $_POST['phoneNumber'];
     $email = $_POST['email'];
     $job = $_POST['job'];
     $password = $_POST['password'];
@@ -65,10 +65,6 @@ if (isset($_POST['submit'])) {
     $sql = "INSERT INTO users (first_name, last_name, phone, email, password, Job) VALUES ('$firstName', '$lastName', '$phone', '$email', '$password', '$job')";
 
     if ($conn->query($sql) === TRUE) {
-         // Retrieve the auto-generated ID from the last insert operation
-         $id = $conn->insert_id;
-         // Store user information in session variables
-         $_SESSION['id'] = $id;
         // Store user information in session variables
         $_SESSION['firstName'] = $firstName;
         $_SESSION['lastName'] = $lastName;
@@ -85,5 +81,6 @@ if (isset($_POST['submit'])) {
 // Close the database connection
 $conn->close();
 ?>
+
 
 
