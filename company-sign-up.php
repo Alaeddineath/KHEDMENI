@@ -17,12 +17,25 @@
 			<label for="headName">Head Name:</label>
 			<input type="text" id="headName" name="headName" required>
 
-			<label for="address">Address:</label>
-			<input type="text" id="address" name="address" required>
+			<label for="email">email:</label>
+			<input type="text" id="email" name="email" required>
 
 			<label for="password">Password:</label>
 			<input type="password" id="password" name="password" required>
 
+			<label for="fields">Field:</label>
+				<select id="fields" name="fields" >
+					<option value="Technology">Technology</option>
+					<option value="Healthcare">Healthcare</option>
+					<option value="Education">Education</option>
+					<option value="Fashion and Apparel">Fashion and Apparel</option>
+					<option value="Media and Entertainment">Media and Entertainment</option>
+					<option value="Manufacturing">Manufacturing</option>
+					<option value="Transportation">Transportation</option>
+					<option value="Sports and Fitness">Sports and Fitness</option>
+					<option value="Other">Other</option>
+				</select>
+	<br><br>
 			<button type="submit" name="submit">Sign Up</button>
 		</form>
 	</div>
@@ -51,18 +64,20 @@ if (isset($_POST['submit'])) {
     // Get form data and sanitize it
     $companyName = $_POST['companyName'];
     $headName = $_POST['headName'];
-    $address = $_POST['address'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
+    $field = $_POST['fields'];
 
     // Insert the data into the companies table
-    $sql = "INSERT INTO companies (company_name, head_name, address, password) VALUES ('$companyName', '$headName', '$address', '$password')";
+    $sql = "INSERT INTO companies (company_name, head_name, email, password, field) VALUES ('$companyName', '$headName', '$email', '$password', '$field')";
 
     if ($conn->query($sql) === TRUE) {
         // Set session variables
         $_SESSION['companyName'] = $companyName;
         $_SESSION['headName'] = $headName;
-        $_SESSION['address'] = $address;
-		$_SESSION['company-password'] = $password;
+        $_SESSION['email'] = $email;
+        $_SESSION['company-password'] = $password;
+        $_SESSION['field'] = $field;
 
         // Redirect to company dashboard
         header("location: company-index.php");
@@ -73,4 +88,7 @@ if (isset($_POST['submit'])) {
 
 // Close the database connection
 $conn->close();
+
+
+// Close the database connection
 ?>

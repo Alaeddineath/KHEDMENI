@@ -21,6 +21,9 @@
             <label for="phone">Phone Number:</label>
             <input type="tel" id="phoneNumber" name="phoneNumber" required>
 
+            <label for="Job">Job:</label>
+            <input type="text" id="job" name="job" required>
+
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
 
@@ -54,10 +57,12 @@ if (isset($_POST['submit'])) {
     $lastName = $_POST['lastName'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
+    $job = $_POST['job'];
     $password = $_POST['password'];
 
+
     // Insert the data into the users table
-    $sql = "INSERT INTO users (first_name, last_name, phone, email, password) VALUES ('$firstName', '$lastName', '$phone', '$email', '$password')";
+    $sql = "INSERT INTO users (first_name, last_name, phone, email, password, Job) VALUES ('$firstName', '$lastName', '$phone', '$email', '$password', '$job')";
 
     if ($conn->query($sql) === TRUE) {
          // Retrieve the auto-generated ID from the last insert operation

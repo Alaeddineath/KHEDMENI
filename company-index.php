@@ -56,16 +56,17 @@ if (isset($_POST['logout'])) {
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About Us</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto active" href="company-index.php#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="company-index.php#about">About Us</a></li>
+          <li><a class="nav-link scrollto" href="company-index.php#services">Services</a></li>
           <li class="dropdown"><a href="#"><span>Post a job</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="jobposting.php">Post a job</a></li>
               <li><a href="company-checkjobs.php">check jobs</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="nav-link scrollto" href="company-index.php#contact">Contact</a></li>
+          <li><a class="nav-link scrollto" href="company-profile-index.php">Profile</a></li>
           <a href="logout.php" class="logout-btn">Log Out <i class="bx bx-chevron-right"></i></a>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
