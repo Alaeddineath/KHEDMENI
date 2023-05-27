@@ -31,6 +31,8 @@ $result = mysqli_query($conn, $sql);
       $deleteSql = "DELETE FROM users WHERE email='$email'";
       if (mysqli_query($conn, $deleteSql)) {
           // Profile deleted successfully, redirect to the home page
+          session_destroy(); // Destroy the session
+
           header("Location: index.php");
           exit();
       } else {
@@ -47,7 +49,7 @@ $result = mysqli_query($conn, $sql);
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>KHADEMNI Profile page</title>
+  <title>Profile page</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
