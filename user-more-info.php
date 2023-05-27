@@ -31,12 +31,12 @@
 
 <body>
 
- <!-- ======= Header ======= -->
+  <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1 class="text-light"><a href="user-index.php"><span>KHEDEMNI</span></a></h1>
+        <h1 class="text-light"><a href="user-index.php"><span>khademni</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="user-index.php"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -46,19 +46,19 @@
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About Us</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li class="dropdown"><a href="#"><span>Find a Job</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="user-checkjobs.php">Find a Job</a></li>
-            </ul>
+          <li class="dropdown"><a href="#"><span>find a job</span> <i class="bi bi-chevron-down"></i></a>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <a href="logout.php" class="logout-btn">Log Out <i class="bx bx-chevron-right"></i></a>
+          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+          <li><a class="getstarted scrollto" href="signup.html">sign up</a></li>
+		  <li><a class="getstarted scrollto" href="login.html">log in</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
     </div>
   </header><!-- End Header -->
+
   <main id="main">
   <?php 
   $dbhost = 'localhost';

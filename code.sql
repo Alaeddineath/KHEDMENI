@@ -28,14 +28,4 @@ CREATE TABLE jobs (
     worker_type VARCHAR(255)
 );
 
-CREATE TABLE comments (
-  comment_id INT PRIMARY KEY AUTO_INCREMENT,
-  comment_date DATE DEFAULT CURRENT_DATE,
-  user_id INT(11) UNSIGNED,
-  job_id INT,
-  comment_content VARCHAR(255),
-  rating INT CHECK (rating >= 0 AND rating <= 5),
-  FOREIGN KEY (user_id) REFERENCES users(id),
-  FOREIGN KEY (job_id) REFERENCES jobs(job_id)
-);
 
