@@ -21,9 +21,6 @@
             <label for="phone">Phone Number:</label>
             <input type="tel" id="phoneNumber" name="phoneNumber" required>
 
-            <label for="Job">Job:</label>
-            <input type="text" id="job" name="job" required>
-
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
 
@@ -55,22 +52,24 @@ if (isset($_POST['submit'])) {
     // Get form data and sanitize it
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
-    $phone = $_POST['phoneNumber'];
+    $phone = $_POST['phone'];
     $email = $_POST['email'];
-    $job = $_POST['job'];
     $password = $_POST['password'];
 
-
     // Insert the data into the users table
-    $sql = "INSERT INTO users (first_name, last_name, phone, email, password, Job) VALUES ('$firstName', '$lastName', '$phone', '$email', '$password', '$job')";
+    $sql = "INSERT INTO users (first_name, last_name, phone, email, password) VALUES ('$firstName', '$lastName', '$phone', '$email', '$password')";
 
     if ($conn->query($sql) === TRUE) {
-        $id = $conn->insert_id;
-        $_SESSION['id']= $id;
+         // Retrieve the auto-generated ID from the last insert operation
+         $id = $conn->insert_id;
+
+         // Store user information in session variables
+         $_SESSION['id'] = $id;
         // Store user information in session variables
         $_SESSION['firstName'] = $firstName;
         $_SESSION['lastName'] = $lastName;
         $_SESSION['phone'] = $phone;
+
         $_SESSION['email'] = $email;
         $_SESSION['password'] = $password;
 
@@ -84,5 +83,5 @@ if (isset($_POST['submit'])) {
 $conn->close();
 ?>
 
-
-
+</body>
+</html>
