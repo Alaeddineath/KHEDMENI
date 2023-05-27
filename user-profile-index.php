@@ -2,6 +2,7 @@
 session_start();
 
 $email = $_SESSION["email"];
+$id = $_SESSION['id'] ;
 
 // Connect to the database
 $servername = "localhost";
@@ -27,19 +28,26 @@ $result = mysqli_query($conn, $sql);
   
 
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['confirm_delete'])) {
+      // Delete the comments associated with the user
+      $deleteCommentsSql = "DELETE FROM comments WHERE user_id='$id'";
+      if (!mysqli_query($conn, $deleteCommentsSql)) {
+          // Error deleting comments
+          $error = "Error deleting comments. Please try again.";
+      }
+  
       // Delete the user's profile
       $deleteSql = "DELETE FROM users WHERE email='$email'";
       if (mysqli_query($conn, $deleteSql)) {
           // Profile deleted successfully, redirect to the home page
           session_destroy(); // Destroy the session
-
+  
           header("Location: index.php");
           exit();
       } else {
           // Error deleting profile
           $error = "Error deleting profile. Please try again.";
       }
-    }
+  }
 ?>
 
 <!DOCTYPE html>
